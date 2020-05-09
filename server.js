@@ -1,10 +1,13 @@
 // Dependencies
 const express = require('express');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 
+
+// Connect to Mongo
+mongoose.connect(MONGODB_URI ,  { useNewUrlParser: true});
 
 
 // Middleware
@@ -15,7 +18,7 @@ app.use(methodOverride('_method')); // to inform that _method is to use alternat
 
 
 // Mongoose Connection
-mongoose.connect('mongodb://localhost:27017/project-2-assessment', { useNewUrlParser: true, useUnifiedTopology: true });
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/project-2-assessment';
 mongoose.connection.once('open', () => {
     console.log('Connected to mongo');
 });
