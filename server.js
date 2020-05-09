@@ -16,7 +16,6 @@ app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
 app.use(methodOverride('_method')); // to inform that _method is to use alternate method mentioned
 
-
 // Mongoose Connection
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/project-2-assessment';
 mongoose.connection.once('open', () => {
